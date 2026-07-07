@@ -1,79 +1,220 @@
--# 🚀 Job Proposal Generator — Setup Guide
--
--A Hermes Agent skill that generates **tailored Upwork/freelancing proposals** from a job URL. Scrapes the job, matches your portfolio, and outputs a professional proposal.
--
-----
--
--## 📁 What's in the folder
--
--```
--job_proposal_generator/
--├── SKILL.md                        # Hermes skill file (don't touch)
--├── README.md                       # This file
--├── scripts/
--│   └── proposal_generator.py       # Main script (don't touch)
--└── references/
--    ├── profile.json                 # ← YOU EDIT: your freelance profile
--    └── workflows.csv                # ← YOU EDIT: your portfolio projects
--```
--
-----
--
--## ✅ Step 1: Install scrapling
--
--Open **Terminal** (Command Prompt) and run:
--
--```cmd
--pip install scrapling
--```
--
--If you don't have Python, download it from [python.org](https://python.org) first.
--
-----
--
--## 📝 Step 2: Edit your profile
--
--Open **`references/profile.json`** in any text editor (Notepad is fine).
--
--Replace the placeholder values with **your** information:
-+# 🚀 Job Proposal Generator for Hermes Agent
-+
-+Generate **tailored Upwork/freelancing proposals** from a job URL — automatically.
-+
-+**How it works:** You give a job URL → it scrapes the posting → matches your profile + portfolio → generates a professional proposal.
-+
-+---
-+
-+## 📦 What You Need to Provide
-+
-+Before starting, prepare these **2 files** with your information:
-+
-+### 1. Your Profile (`profile.json`)
-+
-+Create a file called `profile.json` with your freelance details:
- 
- ```json
- {
-   "name": "Your Name",
--  "title": "AI Automation Expert | n8n Developer",
-+  "title": "Your Title (e.g. AI Automation Expert | n8n Developer)",
-   "hourly_rate": 15,
--  "status": "Rising Talent on Upwork",
-+  "status": "Your Status (e.g. Rising Talent, Top Rated)",
-   "identity_verified": true,
-   "location": "Your City, Country",
--  "experience_years": 5,
--  "background": "5+ years building automation workflows",
-+  "timezone": "UTC+5:30",
-+  "specializations": [
-+    "Your main skill 1",
-+    "Your main skill 2"
-+  ],
-   "tech_stack": {
-     "automation_platforms": ["n8n", "Make.com", "Zapier"],
-     "ai_llms": ["Claude", "OpenAI GPT"],
--    "integrations": ["REST APIs", "Webhooks"],
-+    "integrations": ["REST APIs", "Webhooks", "HubSpot"],
-     "databases": ["PostgreSQL", "Supabase"],
-     "programming": ["JavaScript", "Python"]
-… omitted 646 diff line(s) across 1 additional file(s)/section(s)
+# 🚀 AI Job Proposal Generator for Hermes
+
+This project enables Hermes to generate personalized, professional freelance proposals from a job URL.
+
+The proposal must be created by understanding the client's requirements, matching them with the freelancer's profile and previous work, and writing a proposal that accurately reflects the freelancer's experience.
+
+---
+
+# Prerequisites
+
+Before using this project, make sure Python is installed.
+
+Download Python from:
+
+https://python.org/downloads/
+
+During installation, enable **Add Python to PATH**.
+
+---
+
+# Install Required Package
+
+This project uses **Scrapling** to extract job information from freelance platforms.
+
+Install it by running:
+
+```bash
+pip install scrapling
+```
+
+Verify the installation:
+
+```bash
+python -c "import scrapling"
+```
+
+If the command finishes without any errors, the installation is successful.
+
+---
+
+# Project Structure
+
+```
+job_proposal_generator/
+│
+├── SKILL.md
+├── README.md
+│
+├── scripts/
+│   └── proposal_generator.py
+│
+└── references/
+    ├── profile.md
+    └── workflows.csv
+```
+
+Do not rename or move these files.
+
+---
+
+# Files Provided
+
+Two files will be provided with this project.
+
+## profile.md
+
+This file contains the freelancer's complete professional profile.
+
+Use this file to understand:
+
+- who the freelancer is
+- professional background
+- experience
+- skills
+- technologies
+- certifications
+- services
+- industries
+- work history
+- achievements
+- client reviews
+- technical expertise
+- any other professional information contained in the document
+
+Read the complete file before generating any proposal.
+
+Treat everything inside this file as the primary source of truth for the freelancer.
+
+Never assume information that does not exist in this file.
+
+---
+
+## workflows.csv
+
+This file contains the freelancer's completed projects and portfolio.
+
+Read the entire file.
+
+Analyze every project and use it to identify work that is relevant to the client's requirements.
+
+Whenever possible, reference projects from this file to demonstrate previous experience.
+
+Do not reference projects that are unrelated to the job.
+
+Only use information available in this file.
+
+---
+
+# How Hermes Must Generate Proposals
+
+Whenever a user provides a job URL, Hermes must follow the process below.
+
+## Step 1
+
+Scrape the complete job posting using Scrapling.
+
+Extract every available detail including the title, description, budget, skills, responsibilities, technologies, deliverables, client requirements and any additional information available on the page.
+
+Do not continue until the job has been completely analyzed.
+
+---
+
+## Step 2
+
+Read the uploaded **profile.md** file.
+
+Understand the freelancer's background, technical skills, services, experience, industries, certifications, strengths and overall professional profile.
+
+This information will be used throughout the proposal.
+
+---
+
+## Step 3
+
+Read the uploaded **workflows.csv** file.
+
+Analyze every project.
+
+Determine which projects are the closest match to the client's requirements.
+
+Use only relevant projects.
+
+Ignore unrelated work.
+
+---
+
+## Step 4
+
+Compare the client's requirements against both files.
+
+Identify:
+
+- matching technologies
+- matching industries
+- matching business problems
+- matching services
+- matching experience
+- matching portfolio projects
+
+Use this comparison to build the proposal.
+
+---
+
+## Step 5
+
+Create a proposal that demonstrates a clear understanding of the client's problem.
+
+The proposal must explain why the freelancer is a good fit by using real experience found in **profile.md** and **workflows.csv**.
+
+Do not invent experience, projects, certifications or achievements.
+
+Do not make assumptions that are not supported by the provided files.
+
+---
+
+# Proposal Requirements
+
+Every proposal should:
+
+- be personalized for the specific job
+- directly address the client's requirements
+- reference relevant previous work when appropriate
+- demonstrate understanding of the business problem
+- explain the proposed approach
+- maintain a professional and natural writing style
+- be concise, confident and easy to read
+- avoid generic AI-generated wording
+- be ready to submit without additional editing
+
+---
+
+# Important Rules
+
+- Always scrape the job before writing.
+- Always read **profile.md** completely.
+- Always read **workflows.csv** completely.
+- Always use both files when generating the proposal.
+- Never skip any step.
+- Never invent information.
+- Never exaggerate experience.
+- Never mention projects that do not exist in the portfolio.
+- Never use generic proposal templates.
+- Every proposal must be written specifically for the provided job.
+
+---
+
+# Final Task
+
+After reading this document, create a complete Hermes skill in **SKILL.md**.
+
+The generated skill must:
+
+- use Scrapling to scrape the job posting
+- read and analyze `profile.md`
+- read and analyze `workflows.csv`
+- compare the job requirements with the freelancer's experience
+- identify the most relevant portfolio projects
+- generate personalized proposals based only on the provided information
+- follow the complete workflow and rules described in this document
+- produce professional proposals that are accurate, truthful, and ready for submission
