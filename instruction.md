@@ -1,5 +1,3 @@
-a/f:\hermis agent\skills\productivity\job_proposal_generator\README.md → b/f:\hermis agent\skills\productivity\job_proposal_generator\README.md
-@@ -1,138 +1,536 @@
 -# 🚀 Job Proposal Generator — Setup Guide
 -
 -A Hermes Agent skill that generates **tailored Upwork/freelancing proposals** from a job URL. Scrapes the job, matches your portfolio, and outputs a professional proposal.
