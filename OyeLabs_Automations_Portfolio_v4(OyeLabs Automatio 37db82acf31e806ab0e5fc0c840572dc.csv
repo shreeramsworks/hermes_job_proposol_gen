@@ -1,0 +1,355 @@
+﻿#,Category,Project Name,Description,Use Cases,Demo / Links,n8n SS,Problem Statement,ROI (Impact),Youtube Link,Whatsapp sharable message
+1,🔵 Sales Automation,WATI Lead Handler,"WhatsApp-based AI chatbot built on n8n that automatically captures incoming leads, detects the product of interest using GPT/Gemini AI, and assigns them to the right sales agent via a round-robin system. Integrates WATI, Supabase, OpenAI, and Discord.",Auto WhatsApp lead capture • AI product detection • Round-robin agent assignment • Lead tracking in Supabase • Discord alerts,https://oyelabtech-my.sharepoint.com/:v:/g/personal/aarya_vaidya_oyelabs_com/IQBUOdzCsBftR4H_ZCovRWPsAX0lB_F9xhRUrh3pMS89rzs?e=QYYJkI,WATI webhook → AI product detect node → Round-robin assign → Supabase upsert → Discord alert,"Sales agents were manually checking WhatsApp for incoming leads, causing delays and missed opportunities. There was no system to identify which product a lead was interested in or to fairly distribute leads among agents. Duplicate follow-ups and unassigned leads were common, leading to revenue leakage.","✅ Zero missed WhatsApp leads — every message captured automatically
+✅ 3× faster first response time via instant AI product detection
+✅ Fair agent load distribution via round-robin — no favouritism or overload
+✅ Full lead history in Supabase — real-time visibility for managers
+✅ Discord alerts give instant team-wide awareness of new leads",https://youtu.be/XwBNxFNzhdI,"One of the recent sales automation projects we delivered was for a company generating leads from multiple channels, including WhatsApp, website forms, and live chat.
+
+**Challenge:**
+The client was receiving leads through WATI (WhatsApp), WordPress Contact Forms, and Tawk.to live chat. Each channel was being managed separately, resulting in delayed responses, missed opportunities, duplicate follow-ups, inactive lead ownership, and no standardized process for lead distribution. Sales managers also lacked a single source of truth for tracking lead activity.
+
+**Solution:**
+We built a centralized AI-powered lead management system that automatically captures, qualifies, assigns, and tracks leads from all inbound channels. The system identifies lead intent, filters spam, routes leads to the right sales representative, and ensures every inquiry receives immediate attention.
+
+**Workflow:**
+• Lead enters through WhatsApp (WATI), Website Form (WordPress), or Live Chat (Tawk.to)
+• AI analyzes the inquiry and identifies product/service interest
+• Spam and irrelevant submissions are filtered automatically
+• Lead details are enriched and categorized
+• Lead is assigned using round-robin distribution logic
+• Returning leads are routed back to the previous agent when appropriate
+• Instant notifications are sent to the sales team
+• All lead activity is stored in a centralized system for tracking and reporting
+
+**Business Impact:**
+✅ 100% lead capture across WhatsApp, website forms, and live chat
+✅ Zero missed inquiries through automated routing and assignment
+✅ 3x faster response times through instant lead qualification
+✅ ~80% reduction in spam and bot-generated submissions reaching sales teams
+✅ Fair workload distribution across agents
+✅ Improved lead ownership and follow-up consistency
+✅ Complete visibility of lead history and sales activity for management
+✅ Higher conversion opportunities by engaging prospects immediately
+
+**Demo Video:**
+https://youtu.be/XwBNxFNzhdI
+
+If you're looking to streamline lead handling, reduce response times, and ensure no opportunity slips through the cracks, I'd be happy to show how a similar solution can be adapted to your business.
+"
+2,,WordPress CF7 Lead → First Response Email,"Automated n8n pipeline that receives leads from WordPress Contact Form 7, runs spam & bot filtering, translates messages, generates a personalised AI first-response email via GPT/Gemini, and assigns leads to the sales team with round-robin logic.",WordPress lead intake • Spam & bot filtering • AI-generated first emails • Round-robin assignment • Budget & country detection,Internal / OyeLabs Production,CF7 webhook → Spam filter → Translate → GPT email gen → Round-robin assign → Email send,"WordPress contact form submissions were being handled manually — agents had to read, translate, and respond to each lead individually. Spam and bot submissions wasted significant agent time. There was no system for fair lead distribution or personalised first-response emails at scale.","✅ Instant AI-personalised first-response email sent within seconds of form submission
+✅ ~80% reduction in spam/bot submissions reaching the sales team
+✅ Automatic language translation — handles international leads without friction
+✅ Round-robin ensures every agent gets equal lead volume
+✅ Budget & country detection enables smarter lead prioritisation",,
+3,,Tawk.to Lead Management (Live),"Full live-chat lead capture system integrated with Tawk.to. Detects chat:start events, extracts visitor data (name, phone, email, country, query), checks for existing leads, handles returning leads with inactive assignee reassignment, uses round-robin to assign new leads, and sends Discord + email notifications. Includes 5-minute auto-assignment fallback.",Live-chat lead capture via Tawk.to • New vs returning lead detection • Inactive assignee auto-reassignment • Round-robin assignment with country routing • Discord button notifications • Auto-assignment after 5 min • Product detection from chat query,Internal / OyeLabs Production,Tawk webhook → Lead lookup → New/returning branch → Round-robin/reassign → Discord embed → 5-min fallback timer,"Live-chat visitors on the website often left without any follow-up because no structured capture system existed. When assigned agents went inactive, leads sat unattended. There was no mechanism to detect returning leads, reassign stale ones, or auto-escalate if no one claimed a lead.","✅ 100% of live-chat visitors captured as leads — zero slip-through
+✅ Returning leads automatically routed to their previous agent for continuity
+✅ Inactive agents auto-replaced within minutes, not hours
+✅ 5-minute fallback ensures no lead waits unassigned
+✅ Discord button notifications enable instant one-click assignment by any agent",,
+4,⚙️  Internal Tool,GHL + Supabase Integration — Workflow 1,"Real-time sync workflow triggered by Supabase webhooks whenever a lead is assigned. Automatically creates or updates contacts in GoHighLevel CRM, creates sales opportunities in the pipeline, increments lead counts, and sends email notifications.",Supabase → GoHighLevel CRM sync • Auto contact & opportunity creation • Lead count tracking • Assignment email alerts • Duplicate contact prevention,Internal / OyeLabs Production,Supabase webhook → GHL contact upsert → Opportunity create → Lead count increment → Email notify,"Lead assignments made in Supabase were not reflected in GoHighLevel CRM, creating data silos. Sales teams were working from outdated CRM records, causing duplicate outreach and missed pipeline tracking. Manual syncing was error-prone and time-consuming.","✅ Real-time CRM sync — GHL always reflects latest Supabase lead state
+✅ Zero duplicate contacts — dedup logic prevents double entries
+✅ Sales pipeline auto-populated with opportunities on every new assignment
+✅ Lead count metrics always accurate — no manual tallying
+✅ Assignment email alerts keep the sales team informed instantly",,"One of the recent automation projects I delivered was for a company managing lead assignments between their internal platform (Supabase) and GoHighLevel CRM.
+
+**Business Challenge:**
+When leads were assigned internally, the updates were not automatically reflected in the CRM. This created data silos, duplicate records, inaccurate pipeline reporting, and required manual effort from the sales team to keep systems synchronised.
+
+**Solution Implemented:**
+I built an automated lead management workflow that keeps the CRM updated in real time whenever a lead is assigned. The process automatically creates or updates customer records, generates sales opportunities, tracks lead allocation metrics, and instantly notifies the sales team.
+
+**Workflow:**
+• Lead gets assigned in the internal platform
+• Contact is automatically created/updated in CRM
+• Sales opportunity is added to the pipeline
+• Lead allocation metrics are updated automatically
+• Assignment notification is sent to the responsible team member
+
+**Business Impact:**
+✅ 100% real-time synchronization between internal systems and CRM
+✅ Eliminated duplicate contact creation
+✅ Automated opportunity creation for every assigned lead
+✅ Accurate pipeline and lead-count reporting without manual work
+✅ Faster sales response through instant assignment notifications
+✅ Reduced administrative effort and improved sales team productivity
+
+If you're exploring ways to automate sales operations, CRM processes, or lead management workflows, I'd be happy to share more relevant examples.
+"
+5,,Discord Button Handler,"Webhook-driven n8n system that intercepts Discord button clicks from lead notification embeds. Parses agent name, lead ID, and source, updates Supabase, assigns the WATI operator, logs to assignment_log, and sends confirmation emails to both agent and client.","Manual lead assignment via Discord • Multi-source support (WATI, WordPress, Tawk) • Instant WATI agent assignment • Assignment logging • Confirmation emails",Internal / OyeLabs Production,Discord webhook → Button parse → Supabase update → WATI agent assign → Log → Confirm emails,"When a lead notification was sent to Discord, agents had to manually update Supabase, assign operators in WATI, and send confirmation emails — three separate steps across three tools. This created friction, delays, and inconsistent assignment logging.","✅ One Discord button click handles 3 systems simultaneously — saves ~5 min per lead
+✅ Consistent assignment logging across all lead sources (WATI, WordPress, Tawk)
+✅ WATI operator assigned instantly — no delay in live chat handoff
+✅ Both agent and client receive confirmation emails automatically
+✅ Eliminates human error in multi-step manual assignment process",,
+6,,AI Video Cloning System,"Automated video content pipeline triggered from Google Sheets. Downloads a reference video from Google Drive, converts a script to speech using ElevenLabs, uploads both to Fal.ai, runs AI lip-sync via Creatify, polls for completion, and saves the output URL back to the sheet.",AI avatar video generation • Text-to-speech via ElevenLabs • Lip-sync automation via Fal.ai • Google Sheets task queue • Automated output logging,https://oyelabtech-my.sharepoint.com/:v:/g/personal/syed_sajeed_oyelabs_com/IQBr8XRzl_idQZUgpHrxopZhAfPBQ-9IaGGP2bDs1lOaRGo?e=sh6RIJ,Sheets trigger → Drive download → ElevenLabs TTS → Fal.ai upload → Creatify lip-sync → Poll → Sheet write,"Creating AI spokesperson videos required multiple manual steps: downloading reference footage, generating voiceovers, uploading to lip-sync tools, and tracking output. Each video took hours of coordination across tools, making batch production impossible.","✅ End-to-end AI video produced in under 15 minutes vs. hours manually
+✅ Batch production enabled via Google Sheets queue — scale to 10s of videos/day
+✅ ElevenLabs voice quality far exceeds manual voiceover alternatives
+✅ Zero manual file handling — all uploads/downloads fully automated
+✅ Output URLs auto-logged to Sheets for instant team access",https://youtu.be/qT3NdoiYIYk,"Project: AI Video Cloning System — Automated Spokesperson Video Pipeline
+
+This project was built for a team that wanted to create AI spokesperson-style videos at scale without manually handling every step of production.
+
+Their main challenge was that each video required too many manual steps — downloading reference footage, generating voiceovers, uploading files to different AI tools, running lip-sync, waiting for output, and then tracking the final video link. Because of this, creating videos in batches was slow, inconsistent, and difficult to scale.
+
+We built an automated AI video production workflow where the team could simply manage video requests from Google Sheets, and the system would handle the full production flow automatically.
+
+Workflow:
+• Team adds the script and reference video details in Google Sheets
+• System downloads the reference video from Google Drive
+• Script is converted into realistic voice using ElevenLabs
+• Video and voiceover are sent into the AI lip-sync workflow
+• AI generates the final spokesperson-style video
+• System keeps checking until the video is ready
+• Final output video link is saved back into Google Sheets for the team
+
+Business Impact:
+
+✅ End-to-end AI video produced in under 15 minutes instead of hours manually
+✅ Batch production enabled through a Google Sheets queue, allowing the team to scale to 10s of videos per day
+✅ ElevenLabs voice generation improved voice quality compared to manual/basic voiceover methods
+✅ Zero manual file handling — uploads, downloads, and processing were fully automated
+✅ Final output URLs were auto-logged in Sheets for instant team access
+
+The key value here was scalability. Instead of manually creating one video at a time, the client got a repeatable AI content production system that could handle bulk video creation with minimal human involvement.
+
+Demo/video link:
+https://youtu.be/qT3NdoiYIYk
+
+Happy to walk you through how a similar AI video automation system can be adapted for your content workflow."
+7,,Codlist Keyword Extraction,"Automated keyword extraction and product data processing workflow that reads raw product data from Google Sheets (Codellist), processes and extracts relevant keywords using AI, and structures the output for downstream use.",Product keyword extraction • Google Sheets processing • AI-powered text analysis • Automated data enrichment,https://oyelabtech-my.sharepoint.com/:v:/g/personal/syed_sajeed_oyelabs_com/IQDewA_HPa_bRaJl5i23gU8XAV1uzKAIVQ1db-1J5flTdPA?e=KVLvcY,Sheets trigger → AI keyword extract → Data structure → Output write,"Product keyword extraction from raw Google Sheets data was done manually, resulting in inconsistent quality, slow turnaround, and inability to scale. Downstream listings and campaigns suffered from poor keyword coverage.","✅ ~70% reduction in keyword processing time vs. manual extraction
+✅ Consistent, AI-quality keywords improve product listing discoverability
+✅ Scales to process hundreds of products in a single run
+✅ Google Sheets interface keeps the workflow accessible to non-technical staff
+✅ Structured output feeds directly into downstream tools without reformatting",,"One of the automation projects we recently delivered was for a product catalog and e-commerce data management company.
+
+**Challenge:**
+The client was manually reviewing product data from Google Sheets and extracting keywords for product listings. This process was slow, inconsistent, and difficult to scale as the product catalog grew. Poor keyword coverage was also impacting listing visibility and marketing performance.
+
+**Solution:**
+We built an AI-powered workflow that automatically reads product data from Google Sheets, extracts relevant keywords, structures the output, and prepares it for downstream business processes.
+
+**Workflow:**
+• Product data is added to Google Sheets
+• AI analyzes product information and identifies relevant keywords
+• Keywords are organized into a structured format
+• Processed data is automatically written back for immediate use in listings and campaigns
+
+**Results:**
+✅ ~70% reduction in keyword processing time compared to manual work
+✅ Consistent, high-quality keyword generation across products
+✅ Ability to process hundreds of products in a single run
+✅ Improved product discoverability through better keyword coverage
+✅ Structured output integrates directly with downstream tools, eliminating manual rework
+
+**Demo:**
+https://oyelabtech.sharepoint.com/:v:/r/sites/SalesTeam/Shared%20Documents/Upwork%202026/Portfolio/Demo%20Collateral/Codelist-%20Keyword%20extraction.webm?csf=1&web=1&e=pnz5lk
+
+Happy to walk you through the workflow and discuss how a similar automation could be adapted to your business requirements.
+"
+8,🤝 Client Project (Business Automation),"Apex Windows TX — Lead Capture, Quoting & CRM","End-to-end automation for a US-based window repair business. Includes a 2-stage lead capture form with photo uploads, AI estimate generation based on configurable pricing, Sales Manager quote approval workflow, automated customer notifications, 24-hr escalation alerts, and a built-in Kanban CRM dashboard. Led a team of 3 interns.",Multi-stage lead capture with photos • AI pricing estimate engine • Human-in-the-loop quote approval • Automated quote delivery & acceptance • 24hr escalation • Built-in CRM pipeline • Google Review follow-up,https://oyelabtech-my.sharepoint.com/:v:/g/personal/syed_sajeed_oyelabs_com/IQAUdPmYn1MERJgduw3TmLKoAaudlm7ViArLHD78kBC96-I?e=pDWpUq,Form submit → Photo upload → AI estimate → Manager approval → Customer notify → Escalation → CRM update,"Apex Windows TX had no digital quoting system — all estimates were done over phone calls. There was no CRM, no escalation for unanswered quotes, no automated follow-ups, and no way to manage multiple leads simultaneously. The business was losing deals due to slow response times.","✅ Quote turnaround reduced from 1–2 days to under 2 hours
+✅ 24-hour escalation alerts prevent deals from going cold
+✅ AI estimate engine removes pricing guesswork — consistent, rule-based quotes
+✅ Built-in Kanban CRM eliminates the need for a paid CRM subscription
+✅ Google Review follow-up automation improves online reputation passively",https://youtu.be/-5tzSnYaDmE,"One relevant project we recently delivered was for a US-based window installation company, Apex Windows TX.
+
+Challenge:
+The company was losing leads due to slow response times. Manual estimate preparation took around 3 hours, and the average first response time was about 2 hours.
+
+Solution:
+We built a complete AI-powered sales automation system using n8n, OpenAI, and ElevenLabs.
+
+• Prospect calls or submits a form
+• AI voice agent collects project requirements
+• Photos and lead details are processed automatically
+• AI generates an estimate based on pricing rules
+• Estimate is routed to the Sales Manager for approval
+• Upon approval, quote and payment link are sent automatically
+• Google review request is triggered after job completion
+• All leads are tracked inside a built-in CRM pipeline
+
+Results:
+✅ First response time reduced from 2 hours to under 2 minutes
+✅ Estimation time reduced from 3 hours to 30 minutes
+✅ Zero manual steps from lead capture to payment collection
+✅ Automated follow-ups and escalation alerts prevent leads from going cold
+
+Demo Video:
+https://youtu.be/-5tzSnYaDmE"
+9,,MoonBank P2P - Borrower Qualify + Investor Match + AI Voice,"Full P2P lending qualification pipeline for 1 Finance P2P. Chat widget sends conversations to n8n → MiniMax AI qualifies borrowers (amount, purpose, income) → matches to investors → builds dynamic ElevenLabs voice agent prompt → triggers outbound AI phone call to matched investor. Data logged to Google Sheets.",AI borrower qualification via MiniMax • Investor-borrower matching engine • ElevenLabs AI outbound voice calls • Dynamic voice agent prompt generation • Google Sheets CRM logging,https://oyelabtech-my.sharepoint.com/:v:/g/personal/syed_sajeed_oyelabs_com/IQDv7gVZixy3TLRG9l_2Wc7qAehvBdaHXldam8jZZcu3XeI?e=a1ibaS,Chat widget → n8n → MiniMax qualify → Investor match → ElevenLabs prompt → Outbound AI call → Sheets log,"1 Finance P2P had no automated way to qualify borrowers or match them with investors. Every qualification call was handled manually by staff, creating a bottleneck that slowed deal flow. Investor outreach was delayed by days, reducing conversion rates significantly.","✅ Borrower qualification fully automated — zero staff involvement needed
+✅ Investor matched and called within minutes of borrower submission
+✅ ElevenLabs AI voice calls deliver a professional, human-like experience
+✅ Deal cycle cut from days to under 1 hour end-to-end
+✅ Google Sheets CRM gives real-time visibility into pipeline status",https://youtu.be/kxvnquxjA8Y,"One of the recent automation projects we delivered was for a P2P lending company that needed to speed up borrower qualification and investor matching.
+
+**Business Challenge:**
+The client was manually reviewing borrower applications, qualifying prospects, finding suitable investors, and conducting outreach calls. This process created operational bottlenecks, delayed investor engagement by days, and reduced overall conversion rates.
+
+**Solution Delivered:**
+We built an AI-driven qualification and investor-matching workflow that automatically evaluates borrowers, identifies the most relevant investors, and initiates investor outreach within minutes of application submission.
+
+**Workflow:**
+• Borrower submits details through a chat interface
+• AI qualifies the borrower based on lending criteria
+• System automatically identifies matching investors
+• AI generates a personalized outreach script
+• Automated voice call is placed to the selected investor
+• All activities are logged in the CRM for tracking and reporting
+
+**Business Impact:**
+✅ Borrower qualification became fully automated with no manual intervention required
+✅ Investors were matched and contacted within minutes instead of days
+✅ End-to-end deal cycle reduced from multiple days to less than 1 hour
+✅ Consistent, professional investor communication at scale
+✅ Real-time pipeline visibility for management and operations teams
+✅ Improved speed-to-contact, leading to higher conversion opportunities
+
+**Demo Video:**
+https://youtu.be/kxvnquxjA8Y
+
+Happy to walk you through the workflow and discuss how a similar automation could be adapted for your business use case.
+"
+10,🟠 MEE (Market Expansion engine) - Outreach AI,MEE — Google Maps Scraper,"n8n webhook-triggered workflow that calls SerpAPI's Google Maps engine to scrape local businesses by query + GPS coordinates. Parses business name, category, address, phone, website, rating, and review count. Deduplicates by place_id and bulk-upserts to Supabase. Tracks each run in a scrape_runs log table.",Google Maps business scraping • Query + GPS coordinate targeting • Place ID deduplication • Bulk upsert to Supabase • Scrape run tracking,https://drive.google.com/file/d/1-Qvr9nFvO3wkdpStUENmn7OIPaFCtko6/view?usp=sharing,Webhook → SerpAPI Maps call → Parse results → Dedup by place_id → Supabase bulk upsert → Run log,"Building a prospect list from Google Maps required hours of manual searching, copy-pasting business details, and deduplication. There was no scalable system to target businesses by location and category, making outbound outreach campaigns slow to launch.","✅ Scrapes 100s of local businesses per run in under 5 minutes
+✅ GPS + keyword targeting delivers highly relevant, location-specific leads
+✅ Place ID deduplication prevents wasted enrichment on duplicate entries
+✅ Supabase bulk upsert enables instant downstream processing
+✅ Scrape run logs provide full audit trail for campaign tracking",https://youtu.be/0ZgkFoS_xJI,
+11,,MEE — Website Enrichment (Generic),"Enriches scraped leads by crawling each business website. Fetches homepage, /contact, and /about pages with dual user-agent fallback. Falls back to sitemap.xml if standard pages fail. Extracts emails (with MX validation), phone numbers, owner name, company description, JSON-LD data, and social profiles (LinkedIn, Facebook, Instagram, Twitter, YouTube, TikTok). Writes to Supabase.",Multi-page website crawling • Dual user-agent fallback • Sitemap.xml fallback discovery • Email extraction + MX DNS validation • Phone number extraction • Owner name detection via JSON-LD • Social profile extraction • Supabase enrichment write,,Webhook → Multi-page crawl → Dual UA fallback → Email+MX extract → Phone/social parse → Supabase write,"After scraping business listings, enriching each lead with emails, phone numbers, and social profiles required visiting each website manually. This was completely unscalable — a list of 500 businesses could take days to enrich by hand.","✅ ~90% reduction in manual research time per lead
+✅ MX DNS validation ensures only deliverable emails are stored
+✅ Multi-page crawling with sitemap fallback maximises data extraction success rate
+✅ Social profile extraction enables multi-channel outreach (LinkedIn, Instagram, etc.)
+✅ Scales to enrich thousands of leads overnight without human involvement",,
+12,,MEE — Deep Enrich (Single Lead),"Deep contact intelligence for a single business website. Uses Groq LLM (Llama 3.3-70B) to first rank the most promising internal pages for contact data, crawls them in parallel, then extracts personal contacts (owners, founders, managers with names, titles, emails, phones, LinkedIn profiles) vs generic contacts. Filters out review/testimonial names. Stores full results in Supabase with confidence score.",LLM-guided page selection (Groq Llama 3.3) • Multi-page crawling in parallel • Personal vs generic contact classification • Owner/founder name extraction • LinkedIn /in/ profile extraction • Review & testimonial filtering • Confidence scoring • Supabase deep enrichment storage,,Webhook → Groq page ranking → Parallel crawl → Personal vs generic classify → Confidence score → Supabase store,"Generic website enrichment often missed key decision-makers like founders and owners, returning only generic contact@ emails. Outreach to generic contacts had very low reply rates, wasting campaign budget and effort.","✅ Decision-maker contacts (owners, founders) surfaced with confidence scores
+✅ Personal vs. generic contact classification improves outreach targeting
+✅ LLM-guided page selection reduces irrelevant crawling — faster and cheaper
+✅ LinkedIn profile extraction enables direct connection requests
+✅ Higher reply rates from reaching actual decision-makers vs. generic inboxes",,
+13,,MEE — LLM Outreach Generator,"AI-powered personalised outreach message generator. Reads enriched lead data from Supabase, loads a sender profile, and uses Groq (Llama 3.3-70B) to generate personalised cold emails, LinkedIn messages+connection notes, or WhatsApp messages. Applies industry-specific pain points, avoids generic filler, scores personalisation 1–5, and upserts results to lead_outreach table. Gmail send module included (dormant).",Cold email / LinkedIn / WhatsApp message generation • Groq Llama 3.3-70B AI writing • Sender profile customisation • Industry pain point injection • Personalisation scoring (1–5) • WhatsApp deep link generation • Supabase outreach upsert • Gmail send-ready module,,Webhook → Supabase lead read → Sender profile load → Groq message gen → Score → Supabase upsert,"Writing personalised cold outreach messages for hundreds of leads was a full-time task. Generic, templated messages had very low engagement. There was no system to tailor messages by industry, pain point, or channel (email vs LinkedIn vs WhatsApp) at scale.","✅ Personalised outreach generated for 100s of leads in minutes, not days
+✅ Industry-specific pain points injected automatically — no manual research
+✅ Personalisation score (1–5) filters out low-quality messages before sending
+✅ Multi-channel output: cold email, LinkedIn message+note, WhatsApp — one workflow
+✅ Gmail send module ready to activate for fully hands-free outreach",,
+14,,MEE — Combined Run (Scrape + Enrich),"Orchestrator workflow that chains the Scraper and Enrichment workflows in sequence. A single POST trigger scrapes Google Maps businesses, then immediately enriches all results — returning a unified response with scrape stats (leads found, queries run) and enrichment stats (emails found, hard-blocked count, sitemap fallback usage).",Single-trigger full pipeline execution • Scrape → Enrich chaining • Unified stats response • Retry logic on both sub-workflows • Suitable for scheduled or on-demand full runs,,Single POST → Scraper sub-flow → Enrich sub-flow → Unified stats response,"Running the scraping and enrichment workflows separately required manual triggering, monitoring, and reconciliation of results. Errors in one stage weren't caught until the other stage failed, making the pipeline fragile and difficult to operate.","✅ Single API call triggers complete scrape + enrich pipeline end-to-end
+✅ Unified stats response gives instant quality overview without manual checking
+✅ Retry logic on both sub-workflows prevents silent failures
+✅ Suitable for scheduled daily runs — fully autonomous lead generation
+✅ Eliminates manual orchestration — saves 30+ min of monitoring per campaign run",,
+0,"Whatsapp Bot - AI Receptionist
+",WhatsApp Restaurant Bot,"WhatsApp-based AI receptionist for a small restaurant. A customer messages the restaurant's WhatsApp number, a GPT-4o-mini agent walks them through the menu, applies the active offer, takes the full order with name + phone + delivery details, and on confirmation logs the structured order to Google Sheets and pings the owner. Built with n8n + a custom Python ↔ WhatsApp bridge running on a Hostinger VPS, with per-customer chat memory keyed by phone number.",AI menu walk-through over WhatsApp • Per-customer memory keyed by phone (20-msg window) • Promotion-aware pricing (Buy 1 Get 1 Free) • Sentinel-string order trigger • Structured order extraction (GPT-4o-mini JSON mode) • Two-tab Google Sheet (conversation log + orders ledger) • Owner WhatsApp notification on every confirmed order • LLM error fallback,https://www.loom.com/share/7ed8f482e7064971805b9ff9417b8b9c,"WhatsApp inbound → Python bridge (Flask + Go) → n8n webhook → Extract → AI Agent (GPT-4o-mini + Window Buffer Memory keyed by phone) → Send reply via bridge → Log to Sheet1 (conversation) → IF output contains 'being prepared' → Extract Order JSON (raw HTTP, JSON mode) → Parse → Append Orders tab + Notify Owner via bridge","Small restaurants still take orders by phone, manually noting items and customer details. WhatsApp is the channel customers already use, but personal accounts have no first-party webhook, and the Cloud API requires a verified Business account with Meta-approved templates for every message outside the 24-hour window. There was no lightweight path to a natural-feeling AI receptionist that talks to customers on the same number they message anyway, captures the order cleanly, and routes it to the kitchen without a human in the loop.","✅ Customers order on the same WhatsApp number they already message - zero new app, no login | ✅ Promotion logic enforced consistently in the system prompt - no missed Buy-1-Get-1 Free upsells | ✅ Per-customer memory keyed by phone - multiple customers can order in parallel without state collisions | ✅ Every conversation turn logged to Google Sheets in real time - owner has a searchable transcript and debugging is trivial | ✅ Structured order extraction via JSON-mode GPT call - downstream systems (kitchen, future Stripe, future Supabase) consume clean typed JSON, not chat text | ✅ Custom Python ↔ WhatsApp bridge on Hostinger VPS sidesteps Business API template approvals during sandbox/MVP phase | ✅ LLM error fallback ensures the customer never sees a stack trace - apology reply auto-fires on any agent failure | ✅ Roadmap to Supabase + Stripe + post-order review follow-up is a node swap, not a rewrite",,"One of the recent solutions we built was an AI-powered WhatsApp Receptionist for a restaurant business.
+
+**Challenge:**
+The restaurant was handling orders manually through calls and WhatsApp messages. Staff had to answer repetitive menu questions, apply offers manually, collect customer details, and record orders, which often led to delays, missed upsell opportunities, and operational inefficiencies.
+
+**Solution:**
+We implemented an AI receptionist that operates directly on the restaurant's existing WhatsApp number. Customers can browse the menu, ask questions, place orders, and receive pricing with active promotions automatically applied. Once an order is confirmed, it is instantly recorded and shared with the restaurant owner.
+
+**Workflow:**
+• Customer sends a message on WhatsApp
+• AI guides them through the menu and available offers
+• AI collects customer and delivery details
+• Order is automatically verified and confirmed
+• Order details are logged into the restaurant dashboard
+• Owner receives an instant notification for fulfillment
+
+**Business Impact:**
+✅ Customers order through a familiar channel with zero app downloads or registrations
+✅ Consistent promotion handling with no missed upsell opportunities
+✅ Multiple customer conversations managed simultaneously without staff intervention
+✅ 100% order capture with structured customer and order data
+✅ Complete conversation history available for tracking and customer service
+✅ Reduced manual workload, allowing staff to focus on food preparation and delivery
+✅ Scalable foundation for future online payments, loyalty programs, and customer follow-ups
+
+🎥 Demo: https://www.loom.com/share/7ed8f482e7064971805b9ff9417b8b9c
+
+If you're exploring how AI or automation can reduce operational workload and improve customer response times in your business, I'd be happy to share a few relevant use cases.
+"
+0,Finance / Accounting,Invoice Records Manager,"An autonomous multi-agent pipeline that monitors webhooks for new invoice notifications, extracts key parameter fields from incoming PDF documents using Gemma models via OpenRouter, updates a tracking spreadsheet, and forwards structured data to a billing team."," Automating account receivables tracking.
+
+ Eliminating manual invoice data entry for financial operations teams.",,https://drive.google.com/file/d/155b1irkZ4H1gjI5Q2vZDVOOyXjPepenc/view?usp=sharing,Financial data entry errors and long manual processing times for back-office accounting teams when handling raw client files.," 100% elimination of manual data entry.
+
+ Near-instantaneous document processing.
+
+ High accuracy in ledger synchronization.",,
+0,Content Marketing,LinkedIn Automation v2.0  Enterprise Grade,"A recurring multi-layered agentic content pipeline that reads business and automation trends from a spreadsheet tracking pool, executes clean Markdown body parsing, formats custom PascalCase/CamelCase hashtags via NVIDIA/Gemma prompts, schedules posts, and handles automated asset configuration."," Maintaining a consistent personal or brand voice on professional networks.
+
+ Scaling B2B thought leadership content automatically.",,https://drive.google.com/file/d/1JLZSPTXmMyIlT3z6zJRkHeYoTkWb8nVF/view?usp=sharing,LinkedIn post content engines run dry quickly or require heavy ongoing copywriter labor to parse current research materials without sounding robotic or repetitive.," 10+ hours of creative writing saved weekly.
+
+ 100% hands-free multi-day publishing schedule.
+
+ High-retention scroll-stopping hooks built into every post template.",,
+0,Lead Generation,LinkedIn Leads Scraping & Enrichment (Main),"An intelligent custom Boolean search strategy generator that interprets business profile intents, operates structural scraping loops via SerpAPI/Serpstack, filters out junk profiles, formats arrays of target urls, and updates tracking metrics automatically."," B2B lead list building without high platform subscription fees.
+
+ Automated target mapping for corporate outreach campaigns.",https://drive.google.com/file/d/1ID1bKAj7Fd1pQytvQIYtrCHrAoimTO83/view?usp=sharing,https://drive.google.com/file/d/1PGrLzP60DJjB9NFXibJ3EXFVEv8dGQdO/view?usp=sharing,"Building granular lead list databases is tedious, and writing complex X-Ray search query modifications usually leads to deep nests of noisy data filters."," Saves 15+ hours of manual data-scraping overhead per project.
+
+ Ensures zero data noise through continuous structural matching strings.
+
+ Exponential growth of top-of-funnel discovery pipelines.",,
+0,Data Analytics,Advanced Parallel Batch Analysis †’ Deep Global Intelligence + Predictions,"An elite multi-agent orchestration engine that concurrently routes up to 200 incoming feed elements into 10 discrete parallel computational arrays for localized categorizations, global trend matrix projections, and high-frequency risk modeling."," Macroeconomic dashboard intelligence tracking.
+
+ High-volume portfolio risk analytics monitoring for venture funds or global enterprises.",,https://drive.google.com/file/d/17wFLHPLCyBKC_hlMYjO7tcBOM0uvfWmY/view?usp=sharing,"High-velocity news fields overwhelm human advisory teams, causing critical leading indicators or supply-chain geopolitical risk vectors to go unnoticed."," Replaces manual data-gathering routines across dozens of international bureaus.
+
+ Real-time updates for risk models.
+
+ Discovers hidden market anomalies before mainstream consensus reacts.",,
+0,Market Research,Business Opportunitis (Reddit),"A granular demand-side opportunity discovery tool that scans across subreddits using specific string architectures to extract consumer friction logs, aggregates upvote distributions, scores intent signals, and creates an analytical report of pain points."," Micro-SaaS validation and keyword strategy generation.
+
+ Continuous audience target alignment monitoring for digital marketing businesses.",https://drive.google.com/file/d/1INouwrxffrIyElLbjEEHo2H2KbrscHxa/view?usp=sharing,https://drive.google.com/file/d/1j2pdlYG8ykQt8RsHFedYW7p1Etlev3D0/view?usp=sharing,Founders and marketing departments misallocate product development budgets on software solutions that nobody actually wants or is searching for online.," Mitigates thousands of dollars in lost engineering resources before writing lines of code.
+
+ Maps high-converting outbound pitch copy based on verbatim consumer forum feedback.",,
+0,Sales Strategy,create million dollar offer,"A complete business model optimization agent that utilizes Alex Hormoziâ€™s structural Value Equation framework to process target niche profiles, establish high-value/low-cost collateral options, build risk-reversals, and generate formatted pitch drafts."," Dynamic sales deck structuring for agencies.
+
+ Conversion rate optimization for low-ticket or premium software products.",https://drive.google.com/file/d/1JMzlOO9VLH4YwjHfaBFuJmyv_zTKh_pE/view?usp=sharing,https://drive.google.com/file/d/16sTjwPHyjYctbxlCJj1RKfrJbJkAwGDB/view?usp=sharing,"B2B service teams create low-converting offerings because they compete solely on pricing, leading to low revenue and high client churn."," Double-digit improvements in closing ratios during introductory demo sessions.
+
+ Boosts the perceived value of digital offerings.
+
+ Eliminates client onboarding delay bottlenecks.",,
+0,Data Engineering,DATA ANALYST&VISUALIZATION,"An enterprise BI audit blueprint manager that runs initial multi-sample database validations, flags outliers, inferences type matrices, detects structural drift errors, runs schema analysis with anti-hallucination guardrails, and renders full PDF audit reports."," Data migration reliability verification.
+
+ Enterprise analytics infrastructure health-checks and automated blueprint mapping.",,https://drive.google.com/file/d/1b-Ht0i-1dEpL5y_nj8ts1Jef7nK_jwYR/view?usp=sharing,"Analytical models break frequently down-line due to untracked schema alterations, hidden data drift, or corrupt type conversions across connected data stacks."," Complete structural visibility prior to ingestion formatting.
+
+ Eliminates downstream dashboard reporting bugs.
+
+ Lowers technical debt for big data warehouses.",,
+0,Finance,"Financial News Recap Workflow ","A lightweight automated reader that processes investment data streams using native JavaScript regular expressions to strip out rendering metadata, aggregates headline feeds, and distributes market snapshots directly via messaging APIs."," Continuous personal financial awareness alerts.
+
+ Daily breakfast brief newsletters for client advisory accounts.",,https://drive.google.com/file/d/1MTztPoQNayNtLrcaQ9sday_MnYFPb6Xc/view?usp=sharing,Financial professionals lose critical morning hours filtering through non-actionable market noise just to find relevant top-tier headlines.," Saves 30-45 minutes of manual scrolling every morning.
+
+ Delivers cross-verified index alerts before active market hours begin.
+
+ Lightweight footprint with zero paid external scraper dependencies.",,
+0,Lead Generation,Google lead Scraper,"A free, API-keyless lead acquisition pipeline that extracts Google Maps profiles, systematically traverses raw domain hierarchies (home, /contact, /contact-us), gathers operational emails/phones via Jina AI reader layouts, and updates rows in real-time."," Outbound agency client generation.
+
+ localized contractor search for niche property restoration services.",,https://drive.google.com/file/d/1aTYW_BF9JPUbEOH2HSC4YJba4KSxzxDn/view?usp=sharing,"Paid directory scraping extensions require expensive platform credits, limit parallel extraction counts, and fail to crawl internal contact pages."," $0 platform cost overhead for ongoing list curation workflows.
+
+ High-volume data retrieval metrics.
+
+ Direct integration with outbound sales pipelines.",,
+0,Human Resources,resume screening agent,"An automated HR pipeline that ingests applications, uses a LangChain structured output parser to evaluate candidate qualifications, generates match scores, and appends the decisions/notes directly into an applicant tracking spreadsheet."," Automated candidate evaluation for specific roles (e.g., Data Analyst).
+
+ Bulk resume parsing and keyword matching.",,https://drive.google.com/file/d/1LJvVCZX8_59j66jU1xlWK6F3FhkmMWXm/view?usp=sharing,Manually reviewing hundreds of applications to check for missing requirements and keyword matches is time-consuming and prone to human error.," Massively reduces manual resume screening time.
+
+ Ensures unbiased, consistent evaluation criteria based on structured match scores and missing requirement flags.",,
+0,CRM / Data Management,sheet to dashboard,"A conversational AI agent designed to act as a database manager. It reads incoming chat messages, reviews current Google Sheet data, intelligently updates relevant fields, and can trigger automated client emails on behalf of ""Cyberpunk Analytics""."," Conversational CRM management.
+
+ Hands-free data entry and automated client communication via chat interfaces.",,https://drive.google.com/file/d/1_28m5vVIEDUA3YwXa_PteEAn2yrjTGhD/view?usp=sharing,Updating tracking sheets and dashboards manually through chat instructions or disorganized messages leads to data fragmentation and delayed workflow execution.," Completely conversational data management.
+
+ Instant email dispatch without leaving the chat interface.
+
+ Guarantees data accuracy by reading existing sheets before making targeted updates.",,
+0,IT Administration,Workflows Backups,"A background administrative workflow that operates on a weekly schedule to retrieve all n8n workflows, filter out unnecessary files, and convert them into .json file formats for secure folder storage."," Disaster recovery and version control.
+
+ Automated instance migrations and weekly backup synchronization.",,https://drive.google.com/file/d/1rWUVci8zkHdoCpHxghWJQ6dLMiqZQlTt/view?usp=sharing,"Unintentional workflow deletions, server crashes, or version control overrides can cause hundreds of hours of lost automation development work."," Zero-touch, fully automated weekly JSON backups.
+
+ Provides peace of mind and strict version control for enterprise-level automation instances.",,
+0,Content Marketing,Newsletter Automation v3 - Problem Driven (Final),"A highly advanced, autonomous content engine that reads business pain points from a sheet, uses Gemma-3 via NVIDIA to write gritty B2B newsletters, generates photorealistic editorial images via Flux.1, constructs custom HTML, and renders a final PDF.","Scalable, high-converting B2B newsletter generation.
+
+Autonomous editorial image creation and HTML layout generation.",https://drive.google.com/file/d/1_EL0uNARbWlQCUvGTSgiHzrupJXAsSiN/view?usp=sharing,https://drive.google.com/file/d/1Ua_ZQ6BSPPZOr3yIF6Lt-MjBEtqNr9ZB/view?usp=sharing,"Writing compelling, emotionally resonant B2B newsletters and designing consistent editorial images takes hours per week and often sounds like generic AI fluff."," 100% hands-free newsletter generation.
+
+ Maintains strict facial/environmental visual consistency across dynamically generated hero and story images.
+
+ Saves hours of copywriting and graphic design labor.",,
+0,Compliance / HR,Rag Agent Upload And Retrive data,"An enterprise Retrieval-Augmented Generation (RAG) agent connected to a Pinecone vector database. It uses text splitters and embeddings to search and answer user queries specifically regarding company policies, ethics, and code of conduct."," Internal corporate HR and compliance chatbots.
+ Instant retrieval of specific clauses from massive corporate governance documents.",,https://drive.google.com/file/d/1FeTt_FiszNH8tO55N5xfXvl1yEzwDfT5/view?usp=sharing,"Employees waste time searching through massive corporate PDF manuals (like a Code of Conduct) for specific compliance, ethics, or HR guidelines."," Instant, accurate retrieval of corporate policy data.
+
+ Reduces HR/Compliance query load.
+
+ Delivers well-formatted, easily digestible policy summaries directly to employees.",,
